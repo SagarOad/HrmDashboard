@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import DatePickerOne from "@/components/FormElements/DatePicker/DatePickerOne";
 
 type FormData = {
   firstName: string;
@@ -50,16 +51,17 @@ const page: React.FC = () => {
 
   return (
     <div>
-      <div className="mx-auto max-w-[1500px] rounded-sm border border-stroke bg-white shadow-default">
+      <div className="mx-auto max-w-[1400px] my-16 rounded-sm border border-stroke bg-white shadow-default">
         <div className="border-b border-stroke bg-black px-6.5 py-6 dark:border-strokedark">
           <h3 className="text-center text-[20px] font-medium text-white">
-            Personal Details
+            Application Form
           </h3>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form className="px-8 py-3" onSubmit={handleSubmit}>
           <div className="p-6.5">
             {step === 1 && (
               <div>
+                <h2 className=" text-[22px] mb-12 font-bold">Personal Information</h2>
                 <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
                   <div className="w-full xl:w-1/2">
                     <label className="mb-3 block text-sm font-medium text-black dark:text-white">
@@ -122,19 +124,6 @@ const page: React.FC = () => {
                 <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
                   <div className="w-full xl:w-1/2">
                     <label className="mb-3 block text-sm font-medium text-black dark:text-white">
-                      Email <span className="text-meta-1">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="Enter your email address"
-                      className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                    />
-                  </div>
-                  <div className="w-full xl:w-1/2">
-                    <label className="mb-3 block text-sm font-medium text-black dark:text-white">
                       CNIC <span className="text-meta-1">*</span>
                     </label>
                     <input
@@ -142,7 +131,27 @@ const page: React.FC = () => {
                       name="cnic"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="Enter your email address"
+                      placeholder="Enter your cnic"
+                      className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                    />
+                  </div>
+                  <div className="w-full xl:w-1/2">
+                    <div className="flex flex-col gap-5.5">
+                      <DatePickerOne />
+                    </div>
+                  </div>
+                </div>
+                <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
+                <div className="w-full">
+                    <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                      Address <span className="text-meta-1">*</span>
+                    </label>
+                    <input
+                      type="address"
+                      name="address"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="Enter your cnic"
                       className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                     />
                   </div>
@@ -152,6 +161,7 @@ const page: React.FC = () => {
 
             {step === 2 && (
               <div>
+                <h2 className=" text-[22px] mb-12 font-bold">Educational Record</h2>
                 <div className="mb-4.5">
                   <label className="mb-3 block text-sm font-medium text-black dark:text-white">
                     Phone Number
@@ -217,7 +227,7 @@ const page: React.FC = () => {
                 <button
                   type="button"
                   onClick={nextStep}
-                  className="flex justify-center rounded bg-primary p-3 font-medium text-white hover:bg-opacity-90"
+                  className="flex justify-center rounded bg-primary w-[140px] mt-4 p-3 font-medium text-white hover:bg-opacity-90"
                 >
                   Next
                 </button>
